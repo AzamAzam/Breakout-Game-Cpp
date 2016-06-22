@@ -64,9 +64,9 @@ void Breakout::drawVerticalWalls()
 	for (i = 5; i <= 30; i++)    // vertical walls
 	{
 		setColor(14);
-		gotoxy(20, i);
+		gotoxy(20, i);  //left vertical wal 
 		cout << char(219);
-		gotoxy(59, i);
+		gotoxy(59, i);     //right vertical wall
 		cout << char(219) << endl;
 	}
 }
@@ -82,6 +82,7 @@ void Breakout::drawLowerHorizontalWall()
 }
 void Breakout::drawStripeAndStriker()
 {
+    //i=31
 	gotoxy(40, i - 1);   // stripe
 	for (int j = 1; j <= 5; j++)
 	{
@@ -153,7 +154,7 @@ void Breakout::keysHandling()
 void Breakout::upArrowkey()
 {
 
-	if (rows > 10)
+	if (rows > 24) //stripe moves till bricks 
 	{
 		--rows;
 		gotoxy(cols, rows + 1);
@@ -170,7 +171,7 @@ void Breakout::DownArrowkey()
 {
 
 
-	if (rows < 30)
+	if (rows < 30) //stripe cant move down to lower wall
 	{
 		++rows;
 		gotoxy(cols, rows - 1);
@@ -187,7 +188,7 @@ void Breakout::leftArrowkey()
 {
 
 	--cols;
-	if (cols >= 21)
+	if (cols >= 21)//it stops strips to laft wall
 	{
 		gotoxy(cols + 5, rows);
 		cout << " ";
@@ -198,14 +199,12 @@ void Breakout::leftArrowkey()
 	{
 		cout << "\a";
 		cols++;
-		/*gotoxy(cols, rows);
-		gotoxy(++cols, rows);*/
 	}
 }
 void Breakout::rightArrowkey()
 {
 	++cols;
-	if (cols <= 54 && cols >= 22)
+	if (cols <= 54)   //it stops to right wall
 	{
 		gotoxy(cols - 1, rows);
 		cout << " ";
@@ -215,14 +214,12 @@ void Breakout::rightArrowkey()
 	else
 	{
 		cout << "\a";
-		//gotoxy(cols, rows);
-		//gotoxy(--cols, rows);
 		--cols;
 	}
 }
 void Breakout::spacekey()
 {
-
+    //it pause the game 
 	gotoxy(25, 20);
 	system("pause");
 	gotoxy(25, 20);
@@ -238,28 +235,28 @@ bool Breakout::gameRunning()
 
          if (is_direction_up_right)
         {
-            moveRightUp();
+            moveUpRight();
         }
 		else if (is_direction_down_left)
 		{
-			moveLeftDown();
+			moveDownLeft();
 		}
 		else if (is_direction_down_right)
 		{
-			moveRightDown();
+			moveDownRight();
 		}
 		else if (is_direction_up_left)
 		{
-			moveLeftUp();
+			moveUpLeft();
 		}
 		
 		else if (is_direction_up_left_2_increment)
 		{
-			moveLeftUpwith2Increment();
+			moveUpLeftWith2Increment();
 		}
 		else if (is_direction_up_right_2_increment)
 		{
-			moveRightUpwith2Increment();
+			moveUpRightWith2Increment();
 		}
 
 		setDirection();
@@ -273,7 +270,7 @@ bool Breakout::gameRunning()
         	}
 	return false;
 }
-void Breakout::moveRightUp()
+void Breakout::moveUpRight()
 {
 
 	gotoxy(ball_cols, ball_rows);
@@ -282,7 +279,7 @@ void Breakout::moveRightUp()
 	cout << "O";
 	Sleep(sleep);
 	is_coming_down_from_left = false;
-	if (bricks[ball_cols - 22] == 1 && ball_rows == 6)
+	if (bricks[ball_cols - 22] == 1 && ball_rows == 6)//when bal hits to a brick
 	{
 		score++;
 		bricks[ball_cols - 22] = 0;
@@ -290,19 +287,19 @@ void Breakout::moveRightUp()
 		is_direction_down_right = true;
 
 	}
-	else if (ball_rows == 5 && ball_cols == 58)
+	else if (ball_rows == 5 && ball_cols == 58)//bal is in top right corner 
 	{
 		is_direction_up_right = false;
 		is_direction_down_left = true;
 	}
 
-	else if (ball_cols == 58)
+	else if (ball_cols == 58) //ball strikes to right wall
 	{
 		is_direction_up_right = false;
 		is_direction_up_left = true;
 
 	}
-	else  if (ball_rows == 5)
+	else  if (ball_rows == 5)   //bal sreikes to upper wall
 	{
 
 		is_direction_up_right = false;
@@ -311,7 +308,7 @@ void Breakout::moveRightUp()
 	}
 
 }
-void Breakout::moveLeftUp()
+void Breakout::moveUpLeft()
 {
 
 	gotoxy(ball_cols, ball_rows);
@@ -320,7 +317,7 @@ void Breakout::moveLeftUp()
 	cout << "O";
 	Sleep(sleep);
 	is_coming_down_from_right = false;
-	if (bricks[ball_cols - 22] == 1 && ball_rows == 6)
+	if (bricks[ball_cols - 22] == 1 && ball_rows == 6)//when bal hits to a brick
 	{
 		score++;
 		bricks[ball_cols - 22] = 0;
@@ -329,20 +326,20 @@ void Breakout::moveLeftUp()
 		is_direction_down_left = true;
 
 	}
-	else if (ball_rows == 5 && ball_cols == 21)
+	else if (ball_rows == 5 && ball_cols == 21)    //bal is in uper left corner 
 	{
 		is_direction_up_left = false;
-		is_direction_up_left_2_increment = true;
+		is_direction_down_right = true;
 
 	}
-	else if (ball_rows == 5)
+	else if (ball_rows == 5)//ball strikes upper wall
 	{
 		is_direction_up_left = false;
 		is_direction_down_left = true;
 
 	}
 
-	else if (ball_cols == 21)
+	else if (ball_cols == 21) //bal strikes left wall
 	{
 		is_direction_up_left = false;
 		is_direction_up_right = true;
@@ -350,7 +347,7 @@ void Breakout::moveLeftUp()
 	}
 
 }
-void Breakout::moveLeftDown()
+void Breakout::moveDownLeft()
 {
 
 	gotoxy(ball_cols, ball_rows);
@@ -358,7 +355,7 @@ void Breakout::moveLeftDown()
 	gotoxy(--ball_cols, ++ball_rows);
 	cout << "O";
 	Sleep(sleep);
-	if (bricks[ball_cols - 22] == 1 && ball_rows == 6)
+	if (bricks[ball_cols - 22] == 1 && ball_rows == 6) //when bal hits to a brick
 	{
 		score++;
 		bricks[ball_cols - 22] = 0;
@@ -367,12 +364,12 @@ void Breakout::moveLeftDown()
 		is_direction_up_left = true;
 	}
 
-	else if (ball_rows == rows - 1 && ball_cols >= cols - 1 && ball_cols <= cols + 5)
+	else if (ball_rows == rows - 1 && ball_cols >= cols - 1 && ball_cols <= cols + 5) //bal hits the stripe
 	{
-		is_coming_down_from_right = true;
 		is_direction_down_left = false;
-	}
-	else if (ball_cols == 21)
+        is_coming_down_from_right = true;
+    }
+	else if (ball_cols == 21)//ball strikes left wall
 	{
 		is_direction_down_left = false;
 		is_direction_down_right = true;
@@ -380,7 +377,7 @@ void Breakout::moveLeftDown()
 
 
 }
-void Breakout::moveRightDown()
+void Breakout::moveDownRight()
 {
 
 	gotoxy(ball_cols, ball_rows);
@@ -389,7 +386,7 @@ void Breakout::moveRightDown()
 	gotoxy(++ball_cols, ++ball_rows);
 	cout << "O";
 	Sleep(sleep);
-	if (bricks[ball_cols - 22] == 1 && ball_rows == 6)
+	if (bricks[ball_cols - 22] == 1 && ball_rows == 6)//when bal hits to a brick
 	{
 		score++;
 		bricks[ball_cols - 22] = 0;
@@ -397,20 +394,20 @@ void Breakout::moveRightDown()
 		is_direction_down_right = false;
 		is_direction_up_right = true;
 	}
-	else if (ball_cols == 58)
+	else if (ball_cols == 58)//bal strikes to left bal 
 	{
 		is_direction_down_right = false;
 		is_direction_down_left = true;
 	}
 
-	else if (ball_rows == rows - 1 && ball_cols >= cols - 1 && ball_cols <= cols + 5)
+	else if (ball_rows == rows - 1 && ball_cols >= cols - 1 && ball_cols <= cols + 5) //bal hits the stripe
 	{
 		is_coming_down_from_left = true;
 		is_direction_down_right = false;
 	}
 
 }
-void Breakout::moveRightUpwith2Increment()
+void Breakout::moveUpRightWith2Increment()
 {
 
 	gotoxy(ball_cols, ball_rows);
@@ -425,7 +422,7 @@ void Breakout::moveRightUpwith2Increment()
 		is_direction_up_left = true;
 	}
 }
-void Breakout::moveLeftUpwith2Increment()
+void Breakout::moveUpLeftWith2Increment()
 {
 
 	gotoxy(ball_cols, ball_rows);
