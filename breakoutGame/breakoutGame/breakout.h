@@ -3,13 +3,15 @@
 
 class Breakout
 {
-	int i, cols, rows, ball_cols, ball_rows, sleep = 100, score = 0, tries = 1;
+	int i, cols, rows, ball_cols, ball_rows, sleep = 200, score = 10, tries = 1,level=1;
 	char ch;
-	int bricks[75];
+    int bricks[4][40], row_index;
 	bool game = true, is_direction_up_right = true, is_direction_up_left = false, is_direction_down_left = false, is_direction_down_right = false;
 	bool is_direction_up_right_2_increment = false, is_direction_up_left_2_increment = false, is_coming_down_from_right = false, is_coming_down_from_left = false;
 public:
-	void startgame();
+    
+	void startGame();
+    void flag_variables_define();
 
 	void drawBoundary();
 	void drawUperHorizontalWall();
@@ -25,13 +27,14 @@ public:
 	void DownArrowkey();
 	void spacekey();
 
-	bool gameRunning();
+	bool runGame();
 	void moveUpRight();
 	void moveDownRight();
 	void moveUpLeft();
 	void moveDownLeft();
 	void moveUpLeftWith2Increment();
 	void moveUpRightWith2Increment();
+    bool check_brick();
 	void setDirection();
 
     void scoreBoard();
