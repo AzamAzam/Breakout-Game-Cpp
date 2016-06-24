@@ -1,17 +1,18 @@
 #ifndef BREAKOUT_H
 #define BREAKOUT_H
-
-class Breakout
+#include "menu.h"
+class Breakout:public Menu 
 {
-	int i, cols, rows, ball_cols, ball_rows, sleep = 200, score = 10, tries = 1,level=1;
+    int i, cols, rows, ball_cols, ball_rows, highscore, score = 1, tries = 1, level = 1;
 	char ch;
+    int ball_turn=0;
     int bricks[4][40], row_index;
 	bool game = true, is_direction_up_right = true, is_direction_up_left = false, is_direction_down_left = false, is_direction_down_right = false;
 	bool is_direction_up_right_2_increment = false, is_direction_up_left_2_increment = false, is_coming_down_from_right = false, is_coming_down_from_left = false;
 public:
     
 	void startGame();
-    void flag_variables_define();
+    void flagVariablesDefine();
 
 	void drawBoundary();
 	void drawUperHorizontalWall();
@@ -34,12 +35,16 @@ public:
 	void moveDownLeft();
 	void moveUpLeftWith2Increment();
 	void moveUpRightWith2Increment();
-    bool check_brick();
+    bool ballStrikesToBrick();
 	void setDirection();
+    bool shouldBallMove();
+    void moveBall();
+    void goToHomeScreen();
+    void resetBricks();
 
     void scoreBoard();
-	
-	
+    void setHighScore();
+    void gameover();
 	
 
 

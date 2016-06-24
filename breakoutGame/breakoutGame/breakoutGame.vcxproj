@@ -80,9 +80,11 @@
   <ItemGroup>
     <ClCompile Include="breakoutMain.cpp" />
     <ClCompile Include="func_defs.cpp" />
+    <ClCompile Include="game(def).cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="breakout.h" />
+    <ClInclude Include="menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

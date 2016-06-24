@@ -21,9 +21,15 @@
     <ClCompile Include="func_defs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="game(def).cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="breakout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
