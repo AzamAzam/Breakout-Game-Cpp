@@ -98,23 +98,18 @@ void Breakout::drawLowerHorizontalWall()
 }
 void Breakout::drawStripeAndStriker()
 {
-    //i=31
+    setColor(11);
     gotoxy(cols, rows);   // stripe
     for (int j = 1; j <= 5; j++)
-    {
-        setColor(3);
         cout << char(223);
-    }
+    
     gotoxy(ball_cols, rows - 1);   // striker
-    {
-        setColor(3);
-        cout << 'O';
-    }
+        cout << "O";
 }
 
 void Breakout::drawTiles()
 {
-
+    sleep = 50;
     gotoxy(22, 6);	   // line 1 of tiles
     cout << " ";
     bricks[0][0] = 0;
@@ -130,7 +125,7 @@ void Breakout::drawTiles()
     }
     if (level == 2)
     {
-
+        sleep = 40;
 
         gotoxy(22, 7);	   // line 2 of tiles
         cout << "   ";
@@ -186,6 +181,8 @@ void Breakout::drawTiles()
     }
     else if (level == 3)
     {
+        sleep = 30;
+
         gotoxy(22, 7);	   // line 2 of tiles
         cout << "    ";
         bricks[1][0] = 0;
@@ -377,7 +374,7 @@ bool Breakout::runGame()
             
             
         }
-        Sleep(30);
+        Sleep(sleep);
         
 
         
@@ -387,7 +384,7 @@ bool Breakout::runGame()
         }
 
 
-        if (score == 12 || score==46)
+        if (score == 12&&level==1 || score==46&&level==2)
         {
             game = false;
             level ++;
@@ -609,7 +606,7 @@ void Breakout::setDirection()
 {
 
     if (((ball_cols == cols  && ball_cols <= 21)  //ball is at down left corner 
-        || (ball_cols == cols + 3 || ball_cols == cols + 5)    //ball hits the stripe  on right side 
+        || ((ball_cols == cols + 3 || ball_cols == cols + 5) && !(ball_cols >= 57))  //ball hits the stripe  on right side 
         || (is_coming_down_from_left &&ball_cols == cols + 2)) //bal hits in mid of stripe 
         && ball_rows == rows - 1)
     {
@@ -617,8 +614,8 @@ void Breakout::setDirection()
         scoreBoard();
         is_direction_up_right = true;
     }
-    else if (((ball_cols == cols + 4 && ball_cols >=58) //ball is in right down corner 
-        || (ball_cols == cols + 1 || ball_cols == cols - 1) //ball  hits  the stripe on left side 
+    else if ((((ball_cols == cols + 4 || ball_cols == cols + 3||ball_cols==cols+5) && ball_cols >= 57) //ball is in right down corner 
+        || ((ball_cols == cols + 1 || ball_cols == cols - 1) && !(ball_cols <=22 )) //ball  hits  the stripe on left side 
         || (is_coming_down_from_right &&ball_cols == cols + 2)) // bal hits in mid of stripe 
         && (ball_rows == rows - 1))
     {
@@ -673,7 +670,7 @@ bool Breakout::ballStrikesToBrick()
 
 void Breakout::scoreBoard()
 {
-
+    setColor(11);
     gotoxy(65, 18);
     cout << "                          ";
     gotoxy(65, 18);
@@ -751,15 +748,10 @@ void Breakout::goToHomeScreen()
         tries = 1;
         level = 1;
 
-        system("cls");
-        draw_board();
         home_screen();
     }
     else if (ch == 27)
-    {
-        gotoxy(25, 32);
-        exit(1);
-         }
+        my_exit();
 }
 void Breakout::resetBricks()
 {

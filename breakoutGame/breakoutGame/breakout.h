@@ -3,7 +3,7 @@
 #include "menu.h"
 class Breakout:public Menu 
 {
-    int i, cols, rows, ball_cols, ball_rows, highscore, score = 1, tries = 1, level = 1;
+    int i, cols, rows, ball_cols, ball_rows, highscore, score = 8, tries = 1, level = 1, sleep ;
 	char ch;
     int ball_turn=0;
     int bricks[4][40], row_index;

@@ -2,7 +2,6 @@
 #include "breakout.h"
 #include<fstream>
 
-
 void Menu::cout_breakout1()
 {
     int i;
@@ -11,7 +10,6 @@ void Menu::cout_breakout1()
         //  B
         setColor(11);
         gotoxy(4, i);
-        Sleep(100);
         if (i == 5 || i == 13)
             cout << "B B B B";
         else if (i == 6 || i == 7 || i == 11 || i == 12)
@@ -20,6 +18,7 @@ void Menu::cout_breakout1()
             cout << "B     B";
         else
             cout << "B B B";
+        Sleep(100);
 
         //  R
         setColor(10);
@@ -36,108 +35,108 @@ void Menu::cout_breakout1()
             cout << "R     R";
         else
             cout << "R        R";
+        Sleep(100);
 
         // E
         setColor(12);
         gotoxy(26, i);
-        Sleep(100);
         if (i == 5 || i == 9 || i == 13)
             cout << "E E E E";
         else
             cout << "E       ";
-
+        Sleep(100);
         // O
         setColor(15);
         gotoxy(67, i);
-        Sleep(100);
         if (i == 5 || i == 13)
             cout << "  O O O O ";
         else
             cout << "O         O";
+        Sleep(100);
 
         // U
         setColor(10);
         gotoxy(80, i);
-        Sleep(100);
         if (i == 13)
             cout << "  U U U U ";
         else
             cout << "U         U";
+        Sleep(100);
+
 
         // T
         setColor(11);
         gotoxy(93, i);
-        Sleep(100);
         if (i == 5)
             cout << "T T T T T T T";
         else
             cout << "      T";
+        Sleep(100);
+
     }
     //   A
     setColor(9);
     gotoxy(34, 5);
-    Sleep(100);
     cout << "         A";
+    Sleep(100);
     gotoxy(34, 6);
-    Sleep(100);
     cout << "        A A";
+    Sleep(100);
     gotoxy(34, 7);
-    Sleep(100);
     cout << "       A   A";
+    Sleep(100);
     gotoxy(34, 8);
-    Sleep(100);
     cout << "      A     A";
+    Sleep(100);
     gotoxy(34, 9);
-    Sleep(100);
     cout << "     A A A A A";
+    Sleep(100);
     gotoxy(34, 10);
-    Sleep(100);
     cout << "    A         A";
+    Sleep(100);
     gotoxy(34, 11);
-    Sleep(100);
     cout << "   A           A";
+    Sleep(100);
     gotoxy(34, 12);
-    Sleep(100);
     cout << "  A             A";
-    gotoxy(34, 13);
     Sleep(100);
+    gotoxy(34, 13);
     cout << " A               A";
+    Sleep(100);
 
     //   K
     setColor(14);
     gotoxy(54, 5);
-    Sleep(100);
     cout << "K        K";
+    Sleep(100);
     gotoxy(54, 6);
-    Sleep(100);
     cout << "K      K";
+    Sleep(100);
     gotoxy(54, 7);
-    Sleep(100);
     cout << "K    K";
+    Sleep(100);
     gotoxy(54, 8);
-    Sleep(100);
     cout << "K  K";
+    Sleep(100);
     gotoxy(54, 9);
-    Sleep(100);
     cout << "K K";
+    Sleep(100);
     gotoxy(54, 10);
-    Sleep(100);
     cout << "K  K";
+    Sleep(100);
     gotoxy(54, 11);
-    Sleep(100);
     cout << "K    K";
+    Sleep(100);
     gotoxy(54, 12);
-    Sleep(100);
     cout << "K      K";
-    gotoxy(54, 13);
     Sleep(100);
+    gotoxy(54, 13);
     cout << "K        K";
-    cout << endl;
+    Sleep(100);
 }
-
 void Menu::cout_breakout2(int num)
 {
-    //int i;
+    
     setColor(num);     //   B
     gotoxy(4, 5);
     cout << "B B B B";
@@ -350,10 +349,11 @@ bool Menu::loading()
     for (int i = 5; i <= 105; i++)
     {
         cout << "|";
+        Sleep(30);
         gotoxy(37, 23);
         cout << i - 5 << " %";
+        Sleep(30);
         gotoxy(i, 24);
-        Sleep(50);
 
     }
     gotoxy(30, 26);
@@ -387,7 +387,7 @@ bool Menu::loading()
             if (num > 15)
                 num = 9;
             cout_breakout2(num);
-            //gotoxy(47, 27);
+           
         }
     }
     if (ch == 27)
@@ -398,6 +398,7 @@ bool Menu::loading()
 
 void Menu::draw_board()
 {
+    system("cls");
     int i = 30, j;
     gotoxy(i, 5);
     setColor(14);
@@ -417,6 +418,11 @@ void Menu::draw_board()
 
 void Menu::home_screen()
 {
+    draw_board();
+    setColor(7);
+    gotoxy(22, 24);
+    cout << "Tab = Next Option \t\t Enter = Select \t\t Esc = Exit ";
+   
     gotoxy(50, 9);
     setColor(11);
     cout << "Play Game";
@@ -424,10 +430,14 @@ void Menu::home_screen()
     cout << "High Score";
     gotoxy(50, 15);
     cout << "Help";
+
+    select_option();
 }
 
 void Menu::select_option()
 {
+
+    
     Breakout Game;
     char ch;
     int line = 0;
@@ -520,6 +530,10 @@ void Menu::select_option()
                 highlight_play_game=true;
                 
             }
+            else if (ch == 27)
+            {
+                my_exit();
+            }
             else
                 cout << "\a";
             
@@ -539,7 +553,6 @@ void Menu::high_score()
     file>>High_score;
     file.close();
 
-    system("cls");
     draw_board();
     gotoxy(50, 13);
     setColor(7);
@@ -550,22 +563,16 @@ void Menu::high_score()
     cout << "press Esc to Exit....";
     choice = _getch();
     if (choice == 27)
-    {
-        gotoxy(50, 26);
-        exit(1);
-    }
-    else
-    {
-        system("cls");
-        draw_board();
+        my_exit();
+    
+    else     
         home_screen();
-    }
+   
 }
 
 void Menu::help()
 {
     char choice;
-    system("cls");
     draw_board();
     gotoxy(40, 8);
     setColor(7);
@@ -585,17 +592,21 @@ void Menu::help()
     choice = _getch();
     if (choice == 27)
     {
-        gotoxy(50, 26);
-        exit(1);
+        my_exit();
     }
     else
-    {
-        system("cls");
-        draw_board();
         home_screen();
-    }
 }
 
 
+void Menu::my_exit()
+{
+    system("cls");
+    gotoxy(55, 13);
+    setColor(11);
+    cout << "Good Bye !!!";
+    gotoxy(47, 17);
+    exit(1);
 
+}
 

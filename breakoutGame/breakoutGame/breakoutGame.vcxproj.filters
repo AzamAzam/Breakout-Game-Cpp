@@ -15,13 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="breakoutMain.cpp">
+    <ClCompile Include="Breakout%28main%29.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="func_defs.cpp">
+    <ClCompile Include="Breakout%28def%29.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game(def).cpp">
+    <ClCompile Include="Menu%28def%29.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

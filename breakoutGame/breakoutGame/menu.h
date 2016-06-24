@@ -8,8 +8,7 @@ using namespace std;
 class Menu
 {
 private:
-	int i;
-    int sleep = 100,High_score;
+	int i,High_score;
 	char ch;
 	
 public:
@@ -28,6 +27,6 @@ public:
 
 	void high_score();
 	void help();
-	
+    void my_exit();
 };
 #endif
