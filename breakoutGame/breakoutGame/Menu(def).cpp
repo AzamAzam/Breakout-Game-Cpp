@@ -1,3 +1,7 @@
+/*
+Bcsf15m017  Muhammad Azam
+Bcsf15m022   Naman Ali Khan
+*/
 
 #include "breakout.h"
 #include<fstream>
@@ -136,183 +140,182 @@ void Menu::cout_breakout1()
 }
 void Menu::cout_breakout2(int num)
 {
-    
-    setColor(num);     //   B
-    gotoxy(4, 5);
-    cout << "B B B B";
-    gotoxy(4, 6);
-    cout << "B      B";
-    gotoxy(4, 7);
-    cout << "B      B";
-    gotoxy(4, 8);
-    cout << "B     B";
-    gotoxy(4, 9);
-    cout << "B B B";
-    gotoxy(4, 10);
-    cout << "B     B";
-    gotoxy(4, 11);
-    cout << "B      B";
-    gotoxy(4, 12);
-    cout << "B      B";
-    gotoxy(4, 13);
-    cout << "B B B B";
+    int i;
+    for (i = 5; i < 14; i++)
+    {
+        //  B
+        setColor(num);
+        gotoxy(4, i);
+        if (i == 5 || i == 13)
+            cout << "B B B B";
+        else if (i == 6 || i == 7 || i == 11 || i == 12)
+            cout << "B      B";
+        else if (i == 8 || i == 10)
+            cout << "B     B";
+        else
+            cout << "B B B";
+        Sleep(1);
 
-    setColor(num);        //   R
-    gotoxy(14, 5);
-    cout << "R R R R";
-    gotoxy(14, 6);
-    cout << "R      R";
-    gotoxy(14, 7);
-    cout << "R       R";
-    gotoxy(14, 8);
-    cout << "R      R";
-    gotoxy(14, 9);
-    cout << "R R R";
-    gotoxy(14, 10);
-    cout << "R     R";
-    gotoxy(14, 11);
-    cout << "R      R";
-    gotoxy(14, 12);
-    cout << "R       R";
-    gotoxy(14, 13);
-    cout << "R        R";
+        //  R
+        
+        gotoxy(14, i);
+        if (i == 5)
+            cout << "R R R R";
+        else if (i == 6 || i == 8 || i == 11)
+            cout << "R      R";
+        else if (i == 7 || i == 12)
+            cout << "R       R";
+        else if (i == 9)
+            cout << "R R R";
+        else if (i == 10)
+            cout << "R     R";
+        else
+            cout << "R        R";
+        Sleep(1);
 
-    setColor(num);    //   E
-    gotoxy(26, 5);
-    cout << "E E E E";
-    gotoxy(26, 6);
-    cout << "E       ";
-    gotoxy(26, 7);
-    cout << "E       ";
-    gotoxy(26, 8);
-    cout << "E       ";
-    gotoxy(26, 9);
-    cout << "E E E E";
-    gotoxy(26, 10);
-    cout << "E       ";
-    gotoxy(26, 11);
-    cout << "E       ";
-    gotoxy(26, 12);
-    cout << "E       ";
-    gotoxy(26, 13);
-    cout << "E E E E";
+        // E
+       
+        gotoxy(26, i);
+        if (i == 5 || i == 9 || i == 13)
+            cout << "E E E E";
+        else
+            cout << "E       ";
+        Sleep(1);
 
 
+        // O
+        
+        gotoxy(67, i);
+        if (i == 5 || i == 13)
+            cout << "  O O O O ";
+        else
+            cout << "O         O";
+        Sleep(1);
+
+        // U
+        
+        gotoxy(80, i);
+        if (i == 13)
+            cout << "  U U U U ";
+        else
+            cout << "U         U";
+        Sleep(1);
 
 
-    setColor(num);      //   A
-    gotoxy(34, 5);
-    cout << "         A";
-    gotoxy(34, 6);
-    cout << "        A A";
-    gotoxy(34, 7);
-    cout << "       A   A";
-    gotoxy(34, 8);
-    cout << "      A     A";
-    gotoxy(34, 9);
-    cout << "     A A A A A";
-    gotoxy(34, 10);
-    cout << "    A         A";
-    gotoxy(34, 11);
-    cout << "   A           A";
-    gotoxy(34, 12);
-    Sleep(100);
-    cout << "  A             A";
-    gotoxy(34, 13);
-
-    cout << " A               A";
+        // T
+        
+        gotoxy(93, i);
+        if (i == 5)
+            cout << "T T T T T T T";
+        else
+            cout << "      T";
+        Sleep(1);
 
 
-    setColor(num);       //    K
-    gotoxy(54, 5);
-    cout << "K        K";
-    gotoxy(54, 6);
-    cout << "K      K";
-    gotoxy(54, 7);
-    cout << "K    K";
-    gotoxy(54, 8);
-    cout << "K  K";
-    gotoxy(54, 9);
-    cout << "K K";
-    gotoxy(54, 10);
-    cout << "K  K";
-    gotoxy(54, 11);
-    cout << "K    K";
-    gotoxy(54, 12);
-    cout << "K      K";
-    gotoxy(54, 13);
-    cout << "K        K";
+        //   A
+        
+        if (i == 5)
+        {
+            gotoxy(34, 5);
+            cout << "         A";
+        }
+
+        else if (i == 6)
+        {
+            gotoxy(34, 6);
+            cout << "        A A";
+        }
+        else if (i == 7)
+        {
+            gotoxy(34, 7);
+            cout << "       A   A";
+        }
+        else if (i == 8)
+        {
+            gotoxy(34, 8);
+            cout << "      A     A";
+        }
+        else if (i == 9)
+        {
+            gotoxy(34, 9);
+            cout << "     A A A A A";
+        }
+        else if (i == 10)
+        {
+            gotoxy(34, 10);
+            cout << "    A         A";
+        }
+        else if (i == 11)
+        {
+            gotoxy(34, 11);
+            cout << "   A           A";
+        }
+        else if (i == 12)
+        {
+            gotoxy(34, 12);
+            cout << "  A             A";
+        }
+        else if (i == 13)
+        {
+            gotoxy(34, 13);
+            cout << " A               A";
+        }
+
+        Sleep(1);
+
+        //   K
+        
 
 
+        if (i == 5)
+        {
+            gotoxy(54, 5);
+            cout << "K        K";
+        }
 
+        else if (i == 6)
+        {
+            gotoxy(54, 6);
+            cout << "K      K";
+        }
+        else if (i == 7)
+        {
+            gotoxy(54, 7);
+            cout << "K    K";
+        }
+        else if (i == 8)
+        {
+            gotoxy(54, 8);
+            cout << "K  K";
+        }
+        else if (i == 9)
+        {
+            gotoxy(54, 9);
+            cout << "K K";
+        }
+        else if (i == 10)
+        {
+            gotoxy(54, 10);
+            cout << "K  K";
+        }
+        else if (i == 11)
+        {
+            gotoxy(54, 11);
+            cout << "K    K";
+        }
+        else if (i == 12)
+        {
+            gotoxy(54, 12);
+            cout << "K      K";
+        }
+        else if (i == 13)
+        {
+            gotoxy(54, 13);
+            cout << "K        K";
+        }
+        Sleep(1);
 
-    setColor(num);          //   O
-    gotoxy(67, 5);
-    cout << "  O O O O ";
-    gotoxy(67, 6);
-    cout << "O         O";
-    gotoxy(67, 7);
-    cout << "O         O";
-    gotoxy(67, 8);
-    cout << "O         O";
-    gotoxy(67, 9);
-    cout << "O         O";
-    gotoxy(67, 10);
-    cout << "O         O";
-    gotoxy(67, 11);
-    cout << "O         O";
-    gotoxy(67, 12);
-    cout << "O         O";
-    gotoxy(67, 13);
-    cout << "  O O O O ";
-
-
-
-    setColor(num);     //   U
-    gotoxy(80, 5);
-    cout << "U         U";
-    gotoxy(80, 6);
-    cout << "U         U";
-    gotoxy(80, 7);
-    cout << "U         U";
-    gotoxy(80, 8);
-    cout << "U         U";
-    gotoxy(80, 9);
-    cout << "U         U";
-    gotoxy(80, 10);
-    cout << "U         U";
-    gotoxy(80, 11);
-    cout << "U         U";
-    gotoxy(80, 12);
-    cout << "U         U";
-    gotoxy(80, 13);
-    cout << "  U U U U ";
-
-
-
-    setColor(num);        //   T
-    gotoxy(93, 5);
-    cout << "T T T T T T T";
-    gotoxy(93, 6);
-    cout << "      T";
-    gotoxy(93, 7);
-    cout << "      T";
-    gotoxy(93, 8);
-    cout << "      T";
-    gotoxy(93, 9);
-    cout << "      T";
-    gotoxy(93, 10);
-    cout << "      T";
-    gotoxy(93, 11);
-    cout << "      T";
-    gotoxy(93, 12);
-    cout << "      T";
-    gotoxy(93, 13);
-    cout << "      T";
-
-
-    cout << endl;
-
+    }
 }
 
 void Menu::name_and_rol_no()
@@ -606,6 +609,7 @@ void Menu::my_exit()
     setColor(11);
     cout << "Good Bye !!!";
     gotoxy(47, 17);
+    _getch();
     exit(1);
 
 }

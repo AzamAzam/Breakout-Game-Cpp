@@ -1,8 +1,10 @@
+/*
+Bcsf15m017  Muhammad Azam
+Bcsf15m022   Naman Ali Khan
+*/
+
 #include <cstdlib>
 #include "breakout.h"
-
-
-
 
 int main()
 {
@@ -18,6 +20,5 @@ int main()
     else
         m.my_exit();
     
-   // Breakout b;
-   // b.startGame();
+   
 }

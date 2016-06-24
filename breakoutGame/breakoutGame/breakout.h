@@ -1,16 +1,25 @@
+/*
+Bcsf15m017  Muhammad Azam
+Bcsf15m022   Naman Ali Khan
+*/
+
 #ifndef BREAKOUT_H
 #define BREAKOUT_H
 #include "menu.h"
 class Breakout:public Menu 
 {
-    int i, cols, rows, ball_cols, ball_rows, highscore, score = 8, tries = 1, level = 1, sleep ;
-	char ch;
-    int ball_turn=0;
+    int i, cols, rows, ball_cols, ball_rows, highscore, tries, level , sleep ;
+    int score ;
+    char ch;
+    int ball_turn;
     int bricks[4][40], row_index;
 	bool game = true, is_direction_up_right = true, is_direction_up_left = false, is_direction_down_left = false, is_direction_down_right = false;
 	bool is_direction_up_right_2_increment = false, is_direction_up_left_2_increment = false, is_coming_down_from_right = false, is_coming_down_from_left = false;
 public:
-    
+    Breakout()
+    {
+        level = 1, tries = 1, score = 0, ball_turn = 0;
+    }
 	void startGame();
     void flagVariablesDefine();
 

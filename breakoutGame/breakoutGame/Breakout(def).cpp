@@ -1,3 +1,8 @@
+/*
+Bcsf15m017  Muhammad Azam
+Bcsf15m022   Naman Ali Khan
+*/
+
 #include"breakout.h"
 #include <iostream>
 #include <conio.h>
@@ -437,6 +442,8 @@ void Breakout::moveBall(){
     }
 
     setDirection();
+    if (ball_cols == 59||ball_cols==20)
+        drawVerticalWalls();
 
 }
 void Breakout::moveUpRight()
