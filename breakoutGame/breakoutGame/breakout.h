@@ -8,18 +8,17 @@ Bcsf15m022   Naman Ali Khan
 #include "menu.h"
 class Breakout:public Menu 
 {
-    int i, cols, rows, ball_cols, ball_rows, highscore, tries, level , sleep ;
-    int score ;
+	int i, stripe_cols, upper_stripe_rows, down_stripe_rows, ball_cols, ball_rows, highscore, tries, level, sleep;
+    int score,lives ;
     char ch;
     int ball_turn;
     int bricks[4][40], row_index;
-	bool game = true, is_direction_up_right = true, is_direction_up_left = false, is_direction_down_left = false, is_direction_down_right = false;
-	bool is_direction_up_right_2_increment = false, is_direction_up_left_2_increment = false, is_coming_down_from_right = false, is_coming_down_from_left = false;
+	bool game, is_direction_up_right, is_direction_up_left, is_direction_down_left, is_direction_down_right;
+	bool is_direction_up_right_2_increment, is_direction_up_left_2_increment;
+	bool is_coming_from_right, is_coming_from_left;
 public:
-    Breakout()
-    {
-        level = 1, tries = 1, score = 0, ball_turn = 0;
-    }
+    
+    void resetGameVaribles();
 	void startGame();
     void flagVariablesDefine();
 
@@ -34,18 +33,23 @@ public:
 	void rightArrowkey();
 	void leftArrowkey();
 	void upArrowkey();
-	void DownArrowkey();
-	void spacekey();
+	void downArrowkey();
+	void pauseGame();
 
-	bool runGame();
+	void runGame();
+    void playGame();
+
 	void moveUpRight();
 	void moveDownRight();
 	void moveUpLeft();
 	void moveDownLeft();
 	void moveUpLeftWith2Increment();
 	void moveUpRightWith2Increment();
+	
     bool ballStrikesToBrick();
 	void setDirection();
+	void ballStrikeToLowerStripe();
+	void ballStrikeToUpperStripe();
     bool shouldBallMove();
     void moveBall();
     void goToHomeScreen();
@@ -54,7 +58,8 @@ public:
     void scoreBoard();
     void setHighScore();
     void gameover();
-	
+    void exitIt();
+    void showButtons();
 
 
 

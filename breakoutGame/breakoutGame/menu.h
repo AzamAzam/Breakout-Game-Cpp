@@ -7,8 +7,9 @@ Bcsf15m022   Naman Ali Khan
 #define MENU_H
 #include<iostream>
 #include<conio.h>
-using namespace std;
 #include<Windows.h>
+#include <fstream>
+using namespace std;
 
 class Menu
 {

@@ -8,9 +8,9 @@ Bcsf15m022   Naman Ali Khan
 
 int main()
 {
-	system("mode con:cols=120 lines=35");
+    system("mode con:cols=120 lines=35");
 
-
+    
     Menu m;
 
     m.cout_breakout1();
@@ -19,6 +19,5 @@ int main()
         m.home_screen();
     else
         m.my_exit();
-    
-   
-}
+
+    }

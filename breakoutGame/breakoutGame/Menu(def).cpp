@@ -4,7 +4,7 @@ Bcsf15m022   Naman Ali Khan
 */
 
 #include "breakout.h"
-#include<fstream>
+
 
 void Menu::cout_breakout1()
 {
@@ -331,7 +331,7 @@ void Menu::name_and_rol_no()
     cout << "H"; Sleep(80); cout << "A"; Sleep(80); cout << "N"; Sleep(80); cout << "   &   "; Sleep(80); cout << "M";
     Sleep(80); cout << "U"; Sleep(80); cout << "H"; Sleep(80); cout << "A"; Sleep(80); cout << "M"; Sleep(80);
     cout << "M"; Sleep(80); cout << "A"; Sleep(80); cout << "D"; Sleep(80); cout << " A"; Sleep(80); cout << "Z";
-    Sleep(80); cout << "A"; Sleep(80); cout << "M";
+    Sleep(80); cout << "A"; Sleep(80); cout << "M"; Sleep(80);
 
     // Roll no's
     gotoxy(30, 19);
@@ -351,7 +351,7 @@ bool Menu::loading()
     gotoxy(5, 24);
     for (int i = 5; i <= 105; i++)
     {
-        cout << "|";
+        cout <<char(178);
         Sleep(30);
         gotoxy(37, 23);
         cout << i - 5 << " %";
@@ -379,7 +379,7 @@ bool Menu::loading()
             Sleep(700);
             gotoxy(30, 18);
             setColor(num);
-            cout << "NAMAN ALI KHAN   &   MUHAMMAD AZAM";
+            cout << "NAMAN ALI KHAN   &   MUHAMMAD AZAM ";
             gotoxy(30, 19);
             num++;
             if (num > 15)
@@ -605,12 +605,29 @@ void Menu::help()
 void Menu::my_exit()
 {
     system("cls");
-    gotoxy(55, 13);
     setColor(11);
-    cout << "Good Bye !!!";
-    gotoxy(47, 17);
-    _getch();
-    exit(1);
+    char ch;
+    gotoxy(48, 11);
+    cout << "Are You Sure You Want to Exit ";
+    gotoxy(48, 13);
+    cout << "Y = Yes      Any key = continue ";
+    gotoxy(48, 15);
+    ch = _getche();
+    if (ch == 'y' || ch == 'Y')
+    {
+        system("cls");
+        setColor(9);
+        gotoxy(55, 13);
+
+        cout << "Good Bye !!!";
+        gotoxy(47, 17);
+        _getch();
+        exit(1);
+    }
+    else
+        home_screen();
+    
+    
 
 }
 
